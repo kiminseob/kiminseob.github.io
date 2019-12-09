@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
   <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +30,6 @@
 
 
   <body>
-
     <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
      styles, `#sidebar-checkbox` for behavior. -->
 <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" />
@@ -98,22 +96,30 @@
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    
 
     <script>
       (function(document) {
-        var toggle = document.querySelector('.sidebar-toggle');
-        var sidebar = document.querySelector('#sidebar');
-        var checkbox = document.querySelector('#sidebar-checkbox');
+        var toggle = document.querySelector(".sidebar-toggle");
+        var sidebar = document.querySelector("#sidebar");
+        var checkbox = document.querySelector("#sidebar-checkbox");
 
-        document.addEventListener('click', function(e) {
-          var target = e.target;
+        document.addEventListener(
+          "click",
+          function(e) {
+            var target = e.target;
 
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
+            if (
+              !checkbox.checked ||
+              sidebar.contains(target) ||
+              target === checkbox || target === toggle
+            )
+              return;
 
-          checkbox.checked = false;
-        }, false);
+            checkbox.checked = false;
+          },
+          false
+        );
       })(document);
     </script>
   </body>
