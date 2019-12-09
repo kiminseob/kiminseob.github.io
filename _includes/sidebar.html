@@ -12,7 +12,7 @@
     <a
       class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}"
       href="{{ site.baseurl }}/"
-      >Home</a
+      >홈</a
     >
 
     {% comment %} The code below dynamically generates a sidebar nav of pages
@@ -26,9 +26,9 @@
     >
     {% endif %} {% endif %} {% endfor %}
 
-    <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub</a>
+    <a class="sidebar-nav-item" href="{{ site.author.url }}">깃허브</a>
 
-    <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
+    <!-- <span class="sidebar-nav-item">블로그 v{{ site.version }}</span> -->
   </nav>
 
   <div class="sidebar-item">

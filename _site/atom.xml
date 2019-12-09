@@ -4,13 +4,22 @@
  <title>김인섭</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-12-10T02:22:54+09:00</updated>
+ <updated>2019-12-10T03:01:23+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Inseop Kim</name>
    <email>kis6473@naver.com</email>
  </author>
 
+ 
+ <entry>
+   <title>꾸준히 하자</title>
+   <link href="http://localhost:4000/2019/12/10/whats-jekyll/"/>
+   <updated>2019-12-10T00:00:00+09:00</updated>
+   <id>http://localhost:4000/2019/12/10/whats-jekyll</id>
+   <content type="html">&lt;p&gt;화이팅&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>포스트 작성 예시</title>
@@ -142,23 +151,6 @@
 &lt;hr /&gt;
 
 &lt;p&gt;Want to see something else added? &lt;a href=&quot;https://github.com/poole/poole/issues/new&quot;&gt;Open an issue.&lt;/a&gt;&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>지킬이란?</title>
-   <link href="http://localhost:4000/2013/12/31/whats-jekyll/"/>
-   <updated>2013-12-31T00:00:00+09:00</updated>
-   <id>http://localhost:4000/2013/12/31/whats-jekyll</id>
-   <content type="html">&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From &lt;a href=&quot;https://github.com/mojombo/jekyll/blob/master/README.markdown&quot;&gt;the project’s readme&lt;/a&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Jekyll is a simple, blog aware, static site generator. It takes a template directory […] and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;It’s an immensely useful tool and one we encourage you to use here with Lanyon.&lt;/p&gt;
-
-&lt;p&gt;Find out more by &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;visiting the project on GitHub&lt;/a&gt;.&lt;/p&gt;
 </content>
  </entry>
  
