@@ -4,13 +4,85 @@
  <title>김인섭</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-12-10T03:01:23+09:00</updated>
+ <updated>2020-02-20T23:58:56+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Inseop Kim</name>
    <email>kis6473@naver.com</email>
  </author>
 
+ 
+ <entry>
+   <title>파베 초콜릿 만들기</title>
+   <link href="http://localhost:4000/2020/02/15/chocolate/"/>
+   <updated>2020-02-15T00:00:00+09:00</updated>
+   <id>http://localhost:4000/2020/02/15/chocolate</id>
+   <content type="html">&lt;p&gt;발렌타인 데이 기념으로 여자친구❤️에게 줄 파베 초콜릿을 만들었다.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;재료-준비&quot;&gt;재료 준비&lt;/h2&gt;
+&lt;p&gt;✔️ 초콜릿 242g - 집 앞 마트에서 쉽게 구입 가능한걸로&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;가나 마일드 초콜릿 3개 ( 34g * 3개 = 102g )&lt;/li&gt;
+  &lt;li&gt;드림 카카오 92% 1개 ( 86g * 1개 = 86g )&lt;/li&gt;
+  &lt;li&gt;집에 있던 ABC 초콜릿 낱개로 18개 ( 3g * 18개 = 54g )&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;✔️ 휘핑크림 250ml 1개 - 원래는 동물성 생크림으로 만든다는데 없어서 휘핑&lt;/p&gt;
+
+&lt;p&gt;✔️ 집에 있던 파우더 가루 - 코코아, 녹차 등등 취향 껏&lt;/p&gt;
+
+&lt;p&gt;✔️ 아몬드와 호두도 추가했다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/2020-02-15-chocolate/재료.jpeg&quot; style=&quot;display: block; margin: 0px auto;&quot; width=&quot;40%&quot; height=&quot;30%&quot; title=&quot;재료&quot; alt=&quot;재료&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot;text-align: center;&quot;&gt;폰이 G5라 화질 똥&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;비율&quot;&gt;비율&lt;/h2&gt;
+&lt;p&gt;⭐️ &lt;strong&gt;초콜릿 : 생크림 = 2 : 1&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;초콜릿이 242g 이어서 생크림은 절반 정도인 120ml를 넣었다.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;순서&quot;&gt;순서&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;생크림을 기포가 생길 때까지 끓인다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;초콜릿을 넣는다. ( + 아몬드, 호두 )&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;초콜릿이 어느 정도 녹으면 불을 끄고 뒤적거린다. &lt;br /&gt;
+( 주의‼️ 온도 높으면 물 된다)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/2020-02-15-chocolate/초콜릿녹이기.jpeg&quot; style=&quot;display: block; margin: 0px auto;&quot; width=&quot;40%&quot; height=&quot;30%&quot; title=&quot;초콜릿녹이기&quot; alt=&quot;초콜릿녹이기&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;생크림이 안보일 정도로 잘 섞였으면 판에 부어서 2시간 동안 얼린다.&lt;br /&gt;
+(얼음판은 나중에 꺼내기 힘들어서 그냥 그릇에 모양 내는게 나을듯)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/2020-02-15-chocolate/초콜릿판.jpeg&quot; style=&quot;display: block; margin: 0px auto;&quot; width=&quot;40%&quot; height=&quot;30%&quot; title=&quot;초콜릿판&quot; alt=&quot;초콜릿판&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;2시간 후 꺼내서 파우더 가루를 뿌린다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;완성&quot;&gt;완성&lt;/h2&gt;
+&lt;p&gt;모르고 불을 계속 켜둔 채로 초콜릿을 녹이다가 물이 생겼다..😭 찾아보니 온도가 일정 수준 이상이 되면 물이 생긴다고 하고 적당히 고체 상태를 유지하려면 50도 정도가 좋다고 한다.
+물을 빼고 냉동으로 보관하다가 틀에서 빼려고 하니까 모양이 제대로 안 잡히고 흐트러졌다. 결국 수제비 반죽 하듯이 떼어서 모양을 만들었다.
+걱정 했는데 맛도 있고 모양도 나름 귀욤!&lt;/p&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+    &lt;img src=&quot;/public/images/2020-02-15-chocolate/포장.jpeg&quot; style=&quot; display: inline-block;   width: 40%; height: 30%&quot; title=&quot;포장&quot; alt=&quot;포장&quot; /&gt;
+    &lt;img src=&quot;/public/images/2020-02-15-chocolate/완성.jpeg&quot; style=&quot; display: inline-block;  width: 40%; height: 30%&quot; title=&quot;완성&quot; alt=&quot;완성&quot; /&gt;
+&lt;/div&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>꾸준히 하자</title>
