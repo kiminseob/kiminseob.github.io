@@ -13,12 +13,13 @@ title : 소개
 그래서 그냥 적고 싶을 때 적고 싶은 걸 적는 블로그가 되었다.
 </p>
 <br>
-<b>공모전 수상</b> - 총 3050만원의 상금<br>
+<b>공모전 수상</b> - 총 3080만원의 상금<br>
 - LG 스마트 씽큐 블루투스 센서를 활용한 앱 개발 공모전 장려상 <br>
-- SKT nugu 개발 공모전 1회 최우수상, 2회 우수상, 3회 우수상<br><br>
+- SKT nugu 개발 공모전 1회 최우수상, 2회 우수상, 3회 우수상<br>
+- 삼성 빅스비 개발 공모전 2회 입상<br><br>
 <p align="middle">nugu 개발 공모전 인터뷰</p>
 <p align="middle">
-<iframe width="430" height="260" src="https://www.youtube.com/embed/BJPQihWuj9E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p><br>
+<iframe width="400" height="240" src="https://www.youtube.com/embed/BJPQihWuj9E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p><br>
 
 <b>재밌게 했던 작업들</b> - 장고,스프링,노드,뷰 등의 프레임워크<br>
 - 대외활동을 하며 만들었던 텔레그램 방 알람 봇<br>
