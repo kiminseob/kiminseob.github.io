@@ -4,7 +4,7 @@
  <title>김인섭</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2020-03-07T18:07:49+09:00</updated>
+ <updated>2020-03-07T18:15:56+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Inseop Kim</name>
@@ -200,12 +200,10 @@ npm i &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; moment-timezone&lt;/code&
 &lt;span class=&quot;nx&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;warn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;로그를 출력합니다.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;결과&quot;&gt;결과&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;/public/images/2020-03-07-Node.js log 기록 모듈 winston 사용방법 예시/콘솔 로그.png&quot; style=&quot;margin: 0px auto; width: 100%; height: 30%;&quot; title=&quot;콘솔 로그&quot; alt=&quot;콘솔 로그&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;로그 파일 생성도 잘 된 것을 볼 수 있다&lt;/strong&gt;
-&lt;img src=&quot;/public/images/2020-03-07-Node.js log 기록 모듈 winston 사용방법 예시/로그 파일.png&quot; style=&quot;width: 35%; height: 25%;&quot; title=&quot;로그 파일&quot; alt=&quot;로그 파일&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;지금까지 winston을 활용하여 로그를 파일로 남기는 작업을 간단히 진행해봤다.&lt;br /&gt;
+&lt;p&gt;&lt;img src=&quot;/public/images/2020-03-07-Node.js log 기록 모듈 winston 사용방법 예시/콘솔 로그.png&quot; alt=&quot;콘솔 로그&quot; width=&quot;90%&quot; height=&quot;30%&quot; style=&quot;margin:auto;&quot; /&gt;&lt;br /&gt;
+&lt;strong&gt;로그 파일 생성도 잘 된 것을 볼 수 있다&lt;/strong&gt;
+&lt;img src=&quot;/public/images/2020-03-07-Node.js log 기록 모듈 winston 사용방법 예시/로그 파일.png&quot; alt=&quot;로그 파일&quot; width=&quot;35%&quot; height=&quot;25%&quot; /&gt;
+지금까지 winston을 활용하여 로그를 파일로 남기는 작업을 간단히 진행해봤다.&lt;br /&gt;
 나도 공부하면서 정리해놓는 거라 미숙한 부분이 많지만 도움 받는 부분이 있다면 좋겠다.&lt;br /&gt;
 그리고 예시는 뼈대일 뿐이니 여기에 살을 붙여나가면 된다.&lt;/p&gt;
 </content>
