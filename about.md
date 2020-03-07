@@ -21,7 +21,7 @@ title : 소개
 <p align="middle">
 <iframe width="400" height="240" src="https://www.youtube.com/embed/BJPQihWuj9E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p><br>
 
-<b>재밌게 했던 작업들</b> - 장고,스프링,노드,뷰 등의 프레임워크<br>
+<b>재밌게 했던 작업들</b> - Django,Spring,Express,View 등의 프레임워크<br>
 - 대외활동을 하며 만들었던 텔레그램 방 알람 봇<br>
 - 학교 이러닝 사이트에 올라오는 과목별 과제, 공지 등을 카카오톡 플러스 친구 봇을 통해 확인할 수 있는 카카오봇<br>
 - 과홈페이지 게시판 크롤링 카카오봇<br>
