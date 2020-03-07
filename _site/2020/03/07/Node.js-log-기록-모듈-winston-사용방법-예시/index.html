@@ -10,7 +10,7 @@
 
   <title>
     
-      김인섭 &middot; 꾸준히
+      Node.js log 기록 모듈 winston 사용방법 예시 &middot; 김인섭
     
   </title>
 
@@ -87,44 +87,35 @@
       </div>
 
       <div class="container content">
-        <div id="home">
-  <h1>Posts</h1>
-  <ul class="posts">
-     
-    <li>
-      <a href="/2020/03/07/Node.js-log-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF-winston-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8-%E1%84%8B%E1%85%A8%E1%84%89%E1%85%B5/">Node.js log 기록 모듈 winston 사용방법 예시</a
-      ><span> &raquo; March 07, 2020</span>
-    </li>
-      
-    <li>
-      <a href="/2020/03/06/%E1%84%8B%E1%85%AD%E1%84%8C%E1%85%B3%E1%86%B7-%E1%84%83%E1%85%B3%E1%84%82%E1%85%B3%E1%86%AB-%E1%84%89%E1%85%A2%E1%86%BC%E1%84%80%E1%85%A1%E1%86%A8/">요즘 드는 생각, 대학생 이후의 방향성에 대해</a
-      ><span> &raquo; March 06, 2020</span>
-    </li>
-      
-    <li>
-      <a href="/2020/02/15/chocolate/">파베 초콜릿 만들기</a
-      ><span> &raquo; February 15, 2020</span>
-    </li>
-      
-    <li>
-      <a href="/2014/01/01/example-content/">포스트 작성 예시</a
-      ><span> &raquo; January 01, 2014</span>
-    </li>
-     
-  </ul>
-</div>
-<!-- <div class="posts">
+        <div class="post">
+  <h1 class="post-title">Node.js log 기록 모듈 winston 사용방법 예시</h1>
+  <p class="entry-tags">
+    <a
+      href="http://localhost:4000/tags#node.js"
+      title="Pages tagged node.js"
+      rel="tag"
+      >node.js</a
+    > &bull; <a
+      href="http://localhost:4000/tags#winston"
+      title="Pages tagged winston"
+      rel="tag"
+      >winston</a
+    > &bull; <a
+      href="http://localhost:4000/tags#npm"
+      title="Pages tagged npm"
+      rel="tag"
+      >npm</a
+    > &bull; <a
+      href="http://localhost:4000/tags#log"
+      title="Pages tagged log"
+      rel="tag"
+      >log</a
+    >
+  </p>
+  <span class="post-date">07 Mar 2020</span>
   
-  <div class="post">
-    <h1 class="post-title">
-      <a href="//2020/03/07/Node.js-log-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF-winston-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8-%E1%84%8B%E1%85%A8%E1%84%89%E1%85%B5/">
-        Node.js log 기록 모듈 winston 사용방법 예시
-      </a>
-    </h1>
-
-    <span class="post-date">07 Mar 2020</span>
-
-    <p>node.js로 프로젝트를 진행하면서 log를 기록하기 위해 npm 모듈을 알아보던 중 winston이라는 모듈을 발견했다. 예시와 함께 설명이 잘되어 있으며 사용방법도 간편하고 무엇보다 인기가 많은 모듈이라 선택했다.</p>
+  <p><a href="http://localhost:4000/2020/03/07/Node.js-log-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF-winston-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8-%E1%84%8B%E1%85%A8%E1%84%89%E1%85%B5/#disqus_thread">Comments</a></p>
+   <p>node.js로 프로젝트를 진행하면서 log를 기록하기 위해 npm 모듈을 알아보던 중 winston이라는 모듈을 발견했다. 예시와 함께 설명이 잘되어 있으며 사용방법도 간편하고 무엇보다 인기가 많은 모듈이라 선택했다.</p>
 
 <p><a href="https://basketdeveloper.tistory.com/42">참고한 블로그</a>에 적힌 예시와 <a href="https://www.npmjs.com/package/winston">npm winston</a>를 참고하면서 나름대로의 log.js 파일을 만들어봤다.</p>
 
@@ -315,261 +306,78 @@ npm i <span class="nt">-s</span> moment-timezone</code></pre></figure>
 <p>지금까지 winston을 활용하여 로그를 파일로 남기는 작업을 간단히 진행해봤다.<br />
 나도 공부하면서 정리해놓는 거라 미숙한 부분이 많지만 도움 받는 부분이 있다면 좋겠다.<br />
 그리고 예시는 뼈대일 뿐이니 여기에 살을 붙여나가면 된다.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="//2020/03/06/%E1%84%8B%E1%85%AD%E1%84%8C%E1%85%B3%E1%86%B7-%E1%84%83%E1%85%B3%E1%84%82%E1%85%B3%E1%86%AB-%E1%84%89%E1%85%A2%E1%86%BC%E1%84%80%E1%85%A1%E1%86%A8/">
-        요즘 드는 생각, 대학생 이후의 방향성에 대해
-      </a>
-    </h1>
-
-    <span class="post-date">06 Mar 2020</span>
-
-    <p>18년도 11월 대학교 졸업을 앞두고 참가한 SKT NUGU 플레이 개발 공모전에서 최우수상을 타고 그 후에 19년도 5월 경 열린 2번째 공모전에서 또 다시 우수상을 받으며 우승 특혜로 서울 을지로에 있는 SKT 트루 이노베이션 건물에 입주하게 됐고 이후 열린 3번째 공모전에서도 운좋게 우수상을 받아 현재까지 을지로랩에서 NUGU 플레이를 개발하고 있고 더불어 앞으로의 방향성에 대해서도 진지하게 고민하고 있다.</p>
-
-<p>다른 무엇보다 이런 경험으로 인해 얻은 가장 소중한 것은 스펙이나 개발 지식이 아니라 대학교를 졸업하면 취직을 해야겠다는 공식과도 같던 내 안에 틀어박힌 생각을 깨부순것이다.</p>
-
-<p>대부분의 사람들은 일반적인 삶을 살아간다. 초등학교를 졸업하면 중학교를 가고 중학교를 졸업하면 고등학교를 가고 고등학교를 졸업하면 대학교를 가고 대학교를 졸업하면 취직을 한다. 많은 사람들이 그렇게 살아간다. 이런 삶이 잘못됐다는 게 아니다. 단지 의심이 많은 줄 알았던 내가 의심의 여지없이 이러한 삶의 흐름속에 몸을 맡긴 채 물 흐르듯이 있었던 것이 무서웠던 것이다. 의식하지 못한 채 마치 세뇌라도 당한 것처럼 당연하게.</p>
-
-<p>좋은 곳에 취직해야 한다는 말을 어렸을 때 부터 들었었다. 도대체 좋은 곳이란 어디를 말할까? 대기업인가? 그렇다면 어느 대기업의 어느 부서에 연봉은 얼마여야 하며 미래 전망은 어느정도가 돼야할까? 이름만 들어도 모두가 인정해주는 곳? 아니면 일이 쉽고 적으며 안정적이고 승진 스트레스가 없는 곳? 여러가지가 있겠지만 적어도 나에게 있어서 이런 생각은 중요하지 않게 됐다. 취직이 목적이 아닌 수단에 불과해졌기 때문이다.</p>
-
-<p>좋은 곳에 취직해야겠다는 생각 때문에 더 중요한 것을 놓치고 있었던 것 같다. 삶은 하나의 길만 있다는게 아니라는 점. 모두가 알면서 망각하고 있거나 깊게 생각하지 않는 사실이다. 언제부턴가 취직을 제외한 무수히 많은 다른 길들을 나도 모르게 배제했다. 그리고 취직 그 이후의 목표 뿐만 아니라 나아가 내 삶의 방향성에 대해 한번도 깊게 생각하지 않았다는 것에 충격을 먹었다.</p>
-
-<p>인생은 어떻게 될지 모르는 거지만 적어도 자신만의 방향성을 가지고 나아가야하지 않을까 생각한다.</p>
-
-<p>단순히 취직이라는 두 글자로 대학교 이후의 삶에 대해 생각하지 않기로 마음 먹었다. 생각을 좁게 만든다.</p>
-
-<p>사람들은 서로가 틀린 삶이 아닌 다른 삶을 살아가고 있고 거기엔 옳고 그름 따윈 없다. 나는 그 중에 한 사람으로써 적어도 하고 싶은 일에 도전해 볼 것이고 하고 싶은 일을 하며 살고 싶을 뿐이다. 어설프지만 이게 내 방향성이다. 잘 될지 안 될지 모르지만 성공이든 실패든 모든 과정속에서 더 배울 것이고 성장할 것이라고 생각한다.</p>
-
-<p>한번 사는 인생인데 무엇보다 후회없이 살자!</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="//2020/02/15/chocolate/">
-        파베 초콜릿 만들기
-      </a>
-    </h1>
-
-    <span class="post-date">15 Feb 2020</span>
-
-    <p>발렌타인 데이 기념으로 여자친구❤️에게 줄 파베 초콜릿을 만들었다.</p>
-
-<hr />
-<h2 id="재료-준비">재료 준비</h2>
-<p>✔️ 초콜릿 242g - 집 앞 마트에서 쉽게 구입 가능한걸로</p>
-<ul>
-  <li>가나 마일드 초콜릿 3개 ( 34g * 3개 = 102g )</li>
-  <li>드림 카카오 92% 1개 ( 86g * 1개 = 86g )</li>
-  <li>집에 있던 ABC 초콜릿 낱개로 18개 ( 3g * 18개 = 54g )</li>
-</ul>
-
-<p>✔️ 휘핑크림 250ml 1개 - 원래는 동물성 생크림으로 만든다는데 없어서 휘핑</p>
-
-<p>✔️ 집에 있던 파우더 가루 - 코코아, 녹차 등등 취향 껏</p>
-
-<p>✔️ 아몬드와 호두도 추가했다.</p>
-
-<p><img src="/public/images/2020-02-15-chocolate/재료.jpeg" style="display: block; margin: 0px auto;" width="40%" height="30%" title="재료" alt="재료" /></p>
-<p style="text-align: center;">폰이 G5라 화질 똥</p>
-
-<hr />
-<h2 id="비율">비율</h2>
-<p>⭐️ <strong>초콜릿 : 생크림 = 2 : 1</strong></p>
-
-<p>초콜릿이 242g 이어서 생크림은 절반 정도인 120ml를 넣었다.</p>
-
-<hr />
-<h2 id="순서">순서</h2>
-<ol>
-  <li>
-    <p>생크림을 기포가 생길 때까지 끓인다.</p>
-  </li>
-  <li>
-    <p>초콜릿을 넣는다. ( + 아몬드, 호두 )</p>
-  </li>
-  <li>
-    <p>초콜릿이 어느 정도 녹으면 불을 끄고 뒤적거린다. <br />
-( 주의‼️ 온도 높으면 물 된다)</p>
-  </li>
-  <li>
-    <p>생크림이 안보일 정도로 잘 섞였으면 판에 부어서 2시간 동안 얼린다.<br />
-(얼음판은 나중에 꺼내기 힘들어서 그냥 그릇에 모양 내는게 나을듯)</p>
-  </li>
-  <li>
-    <p>2시간 후 꺼내서 파우더 가루를 뿌린다.</p>
-  </li>
-</ol>
-
-<hr />
-<h2 id="완성">완성</h2>
-<p>모르고 불을 계속 켜둔 채로 초콜릿을 녹이다가 물이 생겼다..😭 찾아보니 온도가 일정 수준 이상이 되면 물이 생긴다고 하고 적당히 고체 상태를 유지하려면 50도 정도가 좋다고 한다.
-물을 빼고 냉동으로 보관하다가 틀에서 빼려고 하니까 모양이 제대로 안 잡히고 흐트러졌다. 결국 수제비 반죽 하듯이 떼어서 모양을 만들었다.
-걱정 했는데 맛도 있고 모양도 나름 귀욤!</p>
-<div style="text-align: center;">
-    <img src="/public/images/2020-02-15-chocolate/포장.jpeg" style=" display: inline-block;   width: 40%; height: 30%" title="포장" alt="포장" />
-    <img src="/public/images/2020-02-15-chocolate/완성.jpeg" style=" display: inline-block;  width: 40%; height: 30%" title="완성" alt="완성" />
-</div>
-
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="//2014/01/01/example-content/">
-        포스트 작성 예시
-      </a>
-    </h1>
-
-    <span class="post-date">01 Jan 2014</span>
-
-    <div class="message">
-  Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
-</div>
-
-<p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. <em>Aenean eu leo quam.</em> Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-
-<blockquote>
-  <p>Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-</blockquote>
-
-<p>Etiam porta <strong>sem malesuada magna</strong> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-
-<h2 id="inline-html-elements">Inline HTML elements</h2>
-
-<p>HTML defines a long list of available inline tags, a complete list of which can be found on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network</a>.</p>
-
-<ul>
-  <li><strong>To bold text</strong>, use <code class="language-plaintext highlighter-rouge">&lt;strong&gt;</code>.</li>
-  <li><em>To italicize text</em>, use <code class="language-plaintext highlighter-rouge">&lt;em&gt;</code>.</li>
-  <li>Abbreviations, like <abbr title="HyperText Markup Langage">HTML</abbr> should use <code class="language-plaintext highlighter-rouge">&lt;abbr&gt;</code>, with an optional <code class="language-plaintext highlighter-rouge">title</code> attribute for the full phrase.</li>
-  <li>Citations, like <cite>— Mark otto</cite>, should use <code class="language-plaintext highlighter-rouge">&lt;cite&gt;</code>.</li>
-  <li><del>Deleted</del> text should use <code class="language-plaintext highlighter-rouge">&lt;del&gt;</code> and <ins>inserted</ins> text should use <code class="language-plaintext highlighter-rouge">&lt;ins&gt;</code>.</li>
-  <li>Superscript <sup>text</sup> uses <code class="language-plaintext highlighter-rouge">&lt;sup&gt;</code> and subscript <sub>text</sub> uses <code class="language-plaintext highlighter-rouge">&lt;sub&gt;</code>.</li>
-</ul>
-
-<p>Most of these elements are styled by browsers with few modifications on our part.</p>
-
-<h2 id="heading">Heading</h2>
-
-<p>Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-
-<h3 id="code">Code</h3>
-
-<p>Cum sociis natoque penatibus et magnis dis <code class="language-plaintext highlighter-rouge">code element</code> montes, nascetur ridiculus mus.</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Example can be run directly in your JavaScript console
-</span>
-
-<span class="c1">// Create a function that takes two arguments and returns the sum of those arguments
-</span>
-<span class="kd">var</span> <span class="nx">adder</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">return a + b</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="c1">// Call the function
-</span>
-<span class="nx">adder</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
-<span class="c1">// &gt; 8</span></code></pre></figure>
-
-<p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-
-<h3 id="lists">Lists</h3>
-
-<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-
-<ul>
-  <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-  <li>Donec id elit non mi porta gravida at eget metus.</li>
-  <li>Nulla vitae elit libero, a pharetra augue.</li>
-</ul>
-
-<p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-
-<ol>
-  <li>Vestibulum id ligula porta felis euismod semper.</li>
-  <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-  <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
-</ol>
-
-<p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-
-<dl>
-  <dt>HyperText Markup Language (HTML)</dt>
-  <dd>The language used to describe and define the content of a Web page</dd>
-
-  <dt>Cascading Style Sheets (CSS)</dt>
-  <dd>Used to describe the appearance of Web content</dd>
-
-  <dt>JavaScript (JS)</dt>
-  <dd>The programming language used to build advanced Web sites and applications</dd>
-</dl>
-
-<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-
-<h3 id="tables">Tables</h3>
-
-<p>Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Upvotes</th>
-      <th>Downvotes</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <td>Totals</td>
-      <td>21</td>
-      <td>23</td>
-    </tr>
-  </tfoot>
-  <tbody>
-    <tr>
-      <td>Alice</td>
-      <td>10</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <td>Bob</td>
-      <td>4</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>Charlie</td>
-      <td>7</td>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-
-<hr />
-
-<p>Want to see something else added? <a href="https://github.com/poole/poole/issues/new">Open an issue.</a></p>
-
-  </div>
+ 
+  <div id="disqus_thread"></div>
   
 </div>
 
-<div class="pagination">
-  
-    <span class="pagination-item older">Older</span>
-  
-  
-    <span class="pagination-item newer">Newer</span>
-  
+<!-- <div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+    <li>
+      <h3>
+        <a href="/2020/03/06/%E1%84%8B%E1%85%AD%E1%84%8C%E1%85%B3%E1%86%B7-%E1%84%83%E1%85%B3%E1%84%82%E1%85%B3%E1%86%AB-%E1%84%89%E1%85%A2%E1%86%BC%E1%84%80%E1%85%A1%E1%86%A8/">
+          요즘 드는 생각, 대학생 이후의 방향성에 대해
+          <small>06 Mar 2020</small>
+        </a>
+      </h3>
+    </li>
+    
+    <li>
+      <h3>
+        <a href="/2020/02/15/chocolate/">
+          파베 초콜릿 만들기
+          <small>15 Feb 2020</small>
+        </a>
+      </h3>
+    </li>
+    
+    <li>
+      <h3>
+        <a href="/2014/01/01/example-content/">
+          포스트 작성 예시
+          <small>01 Jan 2014</small>
+        </a>
+      </h3>
+    </li>
+    
+  </ul>
 </div> -->
 
       </div>
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-    
+    <script type="text/javascript">
+  var disqus_config = function() {
+    this.page.url =
+      "http://localhost:4000/2020/03/07/Node.js-log-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF-winston-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8-%E1%84%8B%E1%85%A8%E1%84%89%E1%85%B5/";
+    this.page.identifier =
+      "/2020/03/07/Node.js-log-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF-winston-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8-%E1%84%8B%E1%85%A8%E1%84%89%E1%85%B5/";
+    // this.page.title = "Node.js log 기록 모듈 winston 사용방법 예시 &#8211; ";
+  };
+  (function() {
+    // DON'T EDIT BELOW THIS LINE
+    var d = document,
+      s = d.createElement("script");
+    s.src = "//kiminseob.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+<script
+  id="dsq-count-scr"
+  src="//kiminseob.disqus.com/count.js"
+  async
+></script>
+
 
     <script>
       (function(document) {
