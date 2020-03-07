@@ -9,7 +9,7 @@ title: 김인섭
 tagline: "꾸준히"
 description: "오늘도 한걸음"
 url: https://github.com/kiminseob
-baseurl:
+baseurl: 
 paginate: 5
 
 disqus_shortname: kiminseob
