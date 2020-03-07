@@ -20,7 +20,7 @@ comments: true
 
 ✔️ 아몬드와 호두도 추가했다.  
 
-<img src="/public/images/2020-02-15-chocolate/재료.jpeg" style="display: block; margin: 0px auto;" width="40%" height="30%" title="재료" alt="재료"/>
+![재료]({{ site.baseurl }}/public/images/{{ page.title }}/재료.jpeg){: width="40%" height="30%" style="margin:auto;"}  
 <p style="text-align: center;">폰이 G5라 화질 똥</p>
 
 ---
@@ -49,7 +49,7 @@ comments: true
 물을 빼고 냉동으로 보관하다가 틀에서 빼려고 하니까 모양이 제대로 안 잡히고 흐트러졌다. 결국 수제비 반죽 하듯이 떼어서 모양을 만들었다.
 걱정 했는데 맛도 있고 모양도 나름 귀욤!
 <div style="text-align: center;">
-    <img src="/public/images/2020-02-15-chocolate/포장.jpeg" style=" display: inline-block;   width: 40%; height: 30%"  title="포장" alt="포장"/>
-    <img src="/public/images/2020-02-15-chocolate/완성.jpeg" style=" display: inline-block;  width: 40%; height: 30%" title="완성" alt="완성"/>
+    <img src="/public/images/{{ page.title }}/포장.jpeg" style=" display: inline-block;   width: 40%; height: 30%"  title="포장" alt="포장"/>
+    <img src="/public/images/{{ page.title }}/완성.jpeg" style=" display: inline-block;  width: 40%; height: 30%" title="완성" alt="완성"/>
 </div>
 
