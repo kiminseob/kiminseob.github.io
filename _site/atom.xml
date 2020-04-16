@@ -4,13 +4,40 @@
  <title>김인섭</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2020-03-07T19:01:32+09:00</updated>
+ <updated>2020-04-15T18:14:11+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Inseop Kim</name>
    <email>kis6473@naver.com</email>
  </author>
 
+ 
+ <entry>
+   <title>NUGU play kit를 활용한 프로젝트</title>
+   <link href="http://localhost:4000/2020/04/15/NUGU-%E1%84%91%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A6%E1%84%8B%E1%85%B5-%E1%84%87%E1%85%B5%E1%86%AF%E1%84%83%E1%85%A5%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%92%E1%85%AA%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%86%AB-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3/"/>
+   <updated>2020-04-15T00:00:00+09:00</updated>
+   <id>http://localhost:4000/2020/04/15/NUGU 플레이 빌더를 활용한 프로젝트</id>
+   <content type="html">&lt;h4 id=&quot;1-누구에어--항공권-최저가를-음성만으로-빠르고-간편하게-조회할-수-있는-서비스&quot;&gt;&lt;strong&gt;1. 누구에어&lt;/strong&gt; : 항공권 최저가를 음성만으로 빠르고 간편하게 조회할 수 있는 서비스&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;언어 : Java 8&lt;/li&gt;
+  &lt;li&gt;프레임워크 : Spring&lt;/li&gt;
+  &lt;li&gt;프로젝트 : NUGU 실시간 항공권 음성 검색 서비스
+    &lt;ul&gt;
+      &lt;li&gt;Spring을 이용하여 NUGU 백엔드 프록시 서버 개발&lt;/li&gt;
+      &lt;li&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;관련-기사-및-블로그&quot;&gt;관련 기사 및 블로그&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;누구에어 : &lt;a href=&quot;https://blog.naver.com/nuguai/221417133638&quot;&gt;1&lt;/a&gt;, &lt;a href=&quot;https://www.sktelecom.com/advertise/press_detail.do?page.page=4&amp;amp;idx=4674&amp;amp;page.type=all&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;라스트 브레드 : &lt;a href=&quot;https://blog.naver.com/nuguai/221533277334&quot;&gt;1&lt;/a&gt;, &lt;a href=&quot;https://www.sktelecom.com/advertise/press_detail.do?page.page=3&amp;amp;idx=4874&amp;amp;page.type=all&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;셀보이스 : &lt;a href=&quot;https://blog.naver.com/nuguai/221639899519&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Node.js log 기록 모듈 winston 사용방법 예시</title>
