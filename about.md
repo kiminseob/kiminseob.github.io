@@ -17,8 +17,8 @@ title : 소개
 <iframe width="400" height="240" src="https://www.youtube.com/embed/BJPQihWuj9E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p><br>
 
 <b>재밌게 했던 작업들</b>
-- 사용한 프레임워크
-    - Django, Spring, Express, View
+- 프레임워크
+    - Django, Spring, Express, Vue.js
 - 주제
     - 대외활동을 하며 만들었던 웹 크롤링 텔레그램 알람 봇
     - 학교 이러닝 사이트에 올라오는 과목별 과제, 공지 등을 카카오톡 플러스 친구 봇을 통해 확인할 수 있는 카카오봇
