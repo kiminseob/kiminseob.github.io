@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      자바스크립트 API 문서화 도구 JSDoc &middot; 김인섭
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" />
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>오늘도 한걸음</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a
+      class="sidebar-nav-item"
+      href="/"
+      >홈</a
+    >
+
+                
+    <a
+      class="sidebar-nav-item"
+      href="/about/"
+      >소개</a
+    >
+            
+    <a
+      class="sidebar-nav-item"
+      href="/tags/"
+      >태그</a
+    >
+      
+
+    <a class="sidebar-nav-item" href="https://github.com/kiminseob">깃허브</a>
+
+    <!-- <span class="sidebar-nav-item">블로그 v1.0.0</span> -->
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2020. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">김인섭</a>
+            <small>꾸준히</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">자바스크립트 API 문서화 도구 JSDoc</h1>
+  <p class="entry-tags">
+    <a
+      href="http://localhost:4000/tags#javascript"
+      title="Pages tagged javascript"
+      rel="tag"
+      >javascript</a
+    > &bull; <a
+      href="http://localhost:4000/tags#JSDoc"
+      title="Pages tagged JSDoc"
+      rel="tag"
+      >JSDoc</a
+    >
+  </p>
+  <span class="post-date">23 Apr 2020</span>
+  
+    <p><a href="http://localhost:4000/2020/04/23/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-API-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%84%92%E1%85%AA-%E1%84%83%E1%85%A9%E1%84%80%E1%85%AE-JSDoc/#disqus_thread">Comments</a></p>
+   
+  <p><a href="https://jsdoc.app/">jsdoc</a>은 주석을 파싱하여 문서로 만들어 주는 편리한 문서화 도구이다.</p>
+
+<h3 id="jsdoc-설치">jsdoc 설치</h3>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">--save</span> jsdoc</code></pre></figure>
+
+<h3 id="jsdoc-테마-설치">jsdoc 테마 설치</h3>
+
+<ul>
+  <li><a href="https://cancerberosgx.github.io/jsdoc-templates-demo/demo/">여기</a>서 여러 테마를 볼 수 있다. 나는 <a href="https://www.npmjs.com/package/clean-jsdoc-theme">clean-jsdoc-theme</a> 테마를 적용했다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>npm <span class="nb">install </span>clean-jsdoc-theme</code></pre></figure>
+
+<h3 id="설정-파일-작성">설정 파일 작성</h3>
+
+<ul>
+  <li>루트 경로에 jsdoc.conf 혹은 jsdoc.json 생성 후 설정할 내용을 적는다. ( <a href="https://jsdoc.app/about-configuring-jsdoc.html">참조</a> )</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">touch </span>jsdoc.conf</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"include"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"."</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"includePattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">".js$"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"exclude"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"node_modules/"</span><span class="p">,</span><span class="w"> </span><span class="s2">"logs/"</span><span class="p">,</span><span class="w"> </span><span class="s2">"docs/"</span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"opts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node_modules/clean-jsdoc-theme"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"utf8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./docs/"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recurse"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"verbose"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"templates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"cleverLinks"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"monospaceLinks"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>한 줄씩 살펴보면</p>
+
+<ul>
+  <li><strong>source</strong>
+    <ul>
+      <li><strong>include</strong> : 문서화 할 파일들을 포함하는 경로</li>
+      <li><strong>includePattern</strong> : 정규식 문자열로, 모든 파일 이름이 이 정규식과 일치해야 JSDoc에서 처리된다.</li>
+      <li><strong>exclude</strong> : 문서화 하지 않을 파일의 경로</li>
+    </ul>
+  </li>
+  <li><strong>opts</strong>
+    <ul>
+      <li><strong>template</strong> : 적용할 테마 경로</li>
+      <li><strong>encoding</strong> : 모든 소스 파일을 읽을 때 해당 인코딩이 적용. 기본 값은 utf8</li>
+      <li><strong>destination</strong> : 문서가 만들어 질 폴더</li>
+      <li><strong>recurse</strong> : 소스 파일과 튜토리얼을 스캔 할 때 서브 폴더로 반복한다.</li>
+      <li><strong>verbose</strong> : JSDoc을 run 했을 때, 콘솔에 세부 정보를 보여준다.</li>
+    </ul>
+  </li>
+  <li><strong>templates</strong>
+    <ul>
+      <li><strong>cleverLinks</strong> : true로 설정하면 URL 링크는 일반 텍스트를 사용하고 코드 링크는 모노 스페이스 글꼴을 사용한다.</li>
+      <li><strong>monospaceLinks</strong> : true로 설정하면 {@linkplain} 태그로 만든 링크를 제외하고 모든 링크가 모노 스페이스 글꼴을 사용한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="jsdoc-실행-명령어-스크립트-작성">JSDoc 실행 명령어 스크립트 작성</h3>
+
+<ul>
+  <li>package.json 을 열어 scripts 에 아래 내용을 추가한다.
+    <ul>
+      <li>—configure, -c : 설정 파일 적용</li>
+      <li>—readme, -R : README 파일을 문서에 포함한다</li>
+      <li>—private, -p : Private member를 문서에 포함한다</li>
+    </ul>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"generate-docs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsdoc -c ./jsdoc.conf -R ./README.md -p"</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<h3 id="jsdoc-실행">JSDoc 실행</h3>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span>npm run generate-docs</code></pre></figure>
+
+<p>아래와 같이 docs 폴더가 생성되었다.</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">.
+├── docs
+├── jsdoc.conf
+├── node_modules
+├── package.json
+├── README.md
+├── ...</code></pre></figure>
+
+<p>docs 폴더 안의 index.html를 열어 문서를 확인해본다.</p>
+
+<p>👏끝</p>
+ 
+  
+    <div id="disqus_thread"></div>
+  
+</div>
+
+<!-- <div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+    <li>
+      <h3>
+        <a href="/2020/04/18/%E1%84%8F%E1%85%A9%E1%84%90%E1%85%B3%E1%86%AF%E1%84%85%E1%85%B5%E1%86%AB-%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5/">
+          코틀린 기본 문법 정리
+          <small>18 Apr 2020</small>
+        </a>
+      </h3>
+    </li>
+    
+    <li>
+      <h3>
+        <a href="/2020/03/07/Node.js-log-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF-winston-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8-%E1%84%8B%E1%85%A8%E1%84%89%E1%85%B5/">
+          Node.js log 기록 모듈 winston 사용방법 예시
+          <small>07 Mar 2020</small>
+        </a>
+      </h3>
+    </li>
+    
+    <li>
+      <h3>
+        <a href="/2020/02/15/chocolate/">
+          파베 초콜릿 만들기
+          <small>15 Feb 2020</small>
+        </a>
+      </h3>
+    </li>
+    
+  </ul>
+</div> -->
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    <script type="text/javascript">
+  var disqus_config = function() {
+    this.page.url =
+      "http://localhost:4000/2020/04/23/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-API-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%84%92%E1%85%AA-%E1%84%83%E1%85%A9%E1%84%80%E1%85%AE-JSDoc/";
+    this.page.identifier =
+      "/2020/04/23/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-API-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%84%92%E1%85%AA-%E1%84%83%E1%85%A9%E1%84%80%E1%85%AE-JSDoc/";
+    // this.page.title = "자바스크립트 API 문서화 도구 JSDoc &#8211; ";
+  };
+  (function() {
+    // DON'T EDIT BELOW THIS LINE
+    var d = document,
+      s = d.createElement("script");
+    s.src = "//kiminseob.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+<script
+  id="dsq-count-scr"
+  src="//kiminseob.disqus.com/count.js"
+  async
+></script>
+
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector(".sidebar-toggle");
+        var sidebar = document.querySelector("#sidebar");
+        var checkbox = document.querySelector("#sidebar-checkbox");
+
+        document.addEventListener(
+          "click",
+          function(e) {
+            var target = e.target;
+
+            if (
+              !checkbox.checked ||
+              sidebar.contains(target) ||
+              target === checkbox || target === toggle
+            )
+              return;
+
+            checkbox.checked = false;
+          },
+          false
+        );
+      })(document);
+    </script>
+  </body>
+</html>
