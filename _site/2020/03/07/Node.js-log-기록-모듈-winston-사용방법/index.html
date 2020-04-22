@@ -10,7 +10,7 @@
 
   <title>
     
-      Node.js log 기록 모듈 winston 사용방법 예시 &middot; 김인섭
+      Node.js log 기록 모듈 winston 사용방법 &middot; 김인섭
     
   </title>
 
@@ -88,7 +88,7 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Node.js log 기록 모듈 winston 사용방법 예시</h1>
+  <h1 class="post-title">Node.js log 기록 모듈 winston 사용방법</h1>
   <p class="entry-tags">
     <a
       href="http://localhost:4000/tags#node.js"
@@ -114,17 +114,15 @@
   </p>
   <span class="post-date">07 Mar 2020</span>
   
-    <p><a href="http://localhost:4000/2020/03/07/Node.js-log-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF-winston-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8-%E1%84%8B%E1%85%A8%E1%84%89%E1%85%B5/#disqus_thread">Comments</a></p>
+    <p><a href="http://localhost:4000/2020/03/07/Node.js-log-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF-winston-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8/#disqus_thread">Comments</a></p>
    
-  <p>node.js로 프로젝트를 진행하면서 log를 기록하기 위해 npm 모듈을 알아보던 중 winston이라는 모듈을 발견했다. 예시와 함께 설명이 잘되어 있으며 사용방법도 간편하고 무엇보다 인기가 많은 모듈이라 선택했다.</p>
+  <p>log를 기록하기 위해 npm 모듈을 알아보던 중 winston이라는 모듈을 발견했다. 설명이 잘되어 있으며 사용방법도 간편하고 인기가 많은 모듈이기도 해서 선택했다.</p>
 
-<p><a href="https://basketdeveloper.tistory.com/42">참고한 블로그</a>에 적힌 예시와 <a href="https://www.npmjs.com/package/winston">npm winston</a>를 참고하면서 나름대로의 log.js 파일을 만들어봤다.</p>
+<p><a href="https://basketdeveloper.tistory.com/42">여기</a>와 <a href="https://www.npmjs.com/package/winston">winston</a>을 참고하면서 만들어봤다.</p>
 
 <h3 id="1-필요한-모듈-설치">1. 필요한 모듈 설치</h3>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">npm i <span class="nt">-s</span> winston
-npm i <span class="nt">-s</span> winston-daily-rotate-file
-npm i <span class="nt">-s</span> moment-timezone</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">npm <span class="nb">install</span> <span class="nt">--save</span> winston winston-daily-rotate-file moment-timezone</code></pre></figure>
 
 <p>winston모듈 이외에 2개의 모듈이 더 있는데 winston-daily-rotate-file 모듈은 날짜별로 로그 파일을 생성할 수 있으며 파일 용량의 제한을 두거나 오래된 log파일을 알아서 제거해주는 편리한 모듈이다. 그리고  winston의 timezone은 기본적으로 UTC이기 때문에 한국 시간을 기록하기 위해 moment-timezone 모듈을 사용하여 timezone을 서울로 대체한다.</p>
 
@@ -145,14 +143,16 @@ npm i <span class="nt">-s</span> moment-timezone</code></pre></figure>
 <span class="kd">const</span> <span class="p">{</span> <span class="nx">addColors</span><span class="p">,</span> <span class="nx">createLogger</span><span class="p">,</span> <span class="nx">transports</span><span class="p">,</span> <span class="nx">format</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">winston</span><span class="p">;</span>
 <span class="kd">const</span> <span class="p">{</span> <span class="nx">combine</span><span class="p">,</span> <span class="nx">label</span><span class="p">,</span> <span class="nx">printf</span><span class="p">,</span> <span class="nx">colorize</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">format</span><span class="p">;</span>
 
-<span class="c1">// log파일이 기록될 폴더 경로 (프로젝트의 루트가 기준)</span>
-<span class="kd">const</span> <span class="nx">LOG_DIR</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">./logs</span><span class="dl">'</span><span class="p">;</span>
+<span class="c1">// log파일이 기록될 폴더 경로</span>
+<span class="kd">const</span> <span class="nx">LOG_DIR</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">./logs/log</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">ERR_DIR</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">./logs/error</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">EXCEPTION_DIR</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">./logs/exception</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="cm">/*
  * 로그 레벨 : { emerg: 0, alert: 1, crit: 2, error: 3, warning: 4, notice: 5, info: 6, debug: 7 }
  */</span>
 
-<span class="c1">// 레벨 별 출력 color를 취향에 맞게 설정</span>
+<span class="c1">// 레벨 별 출력 color를 설정</span>
 <span class="nx">addColors</span><span class="p">({</span>
     <span class="na">error</span><span class="p">:</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">warn</span><span class="p">:</span> <span class="dl">'</span><span class="s1">yellow</span><span class="dl">'</span><span class="p">,</span>
@@ -175,29 +175,12 @@ npm i <span class="nt">-s</span> moment-timezone</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell">2020-03-07, 04:39:15 pm <span class="o">[</span>라벨이름] info: 로그를 출력합니다.</code></pre></figure>
 
-<h3 id="4-log-파일-콘솔-transport-옵션-설정">4. log 파일, 콘솔 transport 옵션 설정</h3>
+<h3 id="4-개발용-콘솔-transport-옵션-설정">4. 개발용 콘솔 transport 옵션 설정</h3>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 날짜 별로 생성될 로그 파일의 옵션 설정</span>
-<span class="kd">const</span> <span class="nx">dailyRotateFileTransport</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">transports</span><span class="p">.</span><span class="nx">DailyRotateFile</span><span class="p">({</span>
-    <span class="na">level</span><span class="p">:</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// info 레벨부터 로그를 남긴다. (debug 레벨은 찍히지 않는다)</span>
-    <span class="na">filename</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">LOG_DIR</span><span class="p">}</span><span class="s2">/%DATE%.log`</span><span class="p">,</span> <span class="c1">//./logs/2020-03-07.log</span>
-    <span class="na">datePattern</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YYYY-MM-DD</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">zippedArchive</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// archive된 파일 압축 여부, 디폴트는 false</span>
-    <span class="na">maxSize</span><span class="p">:</span> <span class="dl">"</span><span class="s2">20m</span><span class="dl">"</span><span class="p">,</span>  <span class="c1">// 파일 당 최대 크기를 20mb로 설정</span>
-    <span class="na">maxFiles</span><span class="p">:</span> <span class="dl">"</span><span class="s2">30d</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// 최근 30일간의 파일만 유지, 오래된 파일은 zippedArchive 설정에 따라 삭제 혹은 압축된다.</span>
-    <span class="na">format</span><span class="p">:</span> <span class="nx">combine</span><span class="p">(</span>
-        <span class="nx">label</span><span class="p">({</span> <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">라벨이름</span><span class="dl">'</span> <span class="p">}),</span>
-        <span class="nx">timestamp</span><span class="p">(),</span>  <span class="c1">// 위에서 생성했던 타임스태프 포맷을 사용한다.</span>
-        <span class="nx">logFormat</span> <span class="c1">// 위에서 생성했던 로그 출력 포맷 형식을 사용한다.</span>
-    <span class="p">)</span>
-<span class="p">});</span>
-
-<span class="c1">// 로그의 콘솔 출력 옵션 설정</span>
-<span class="kd">const</span> <span class="nx">consoleTransport</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">transports</span><span class="p">.</span><span class="nx">Console</span><span class="p">({</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">consoleTransport</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">transports</span><span class="p">.</span><span class="nx">Console</span><span class="p">({</span>
     <span class="na">level</span><span class="p">:</span> <span class="dl">'</span><span class="s1">debug</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">handleExceptions</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="na">colorize</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="na">format</span><span class="p">:</span> <span class="nx">combine</span><span class="p">(</span>
         <span class="nx">label</span><span class="p">({</span> <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">라벨이름</span><span class="dl">'</span> <span class="p">}),</span>
         <span class="nx">timestamp</span><span class="p">(),</span>
@@ -209,20 +192,56 @@ npm i <span class="nt">-s</span> moment-timezone</code></pre></figure>
 <h3 id="5-로거-생성">5. 로거 생성</h3>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">createLogger</span><span class="p">({</span>
+    <span class="na">level</span><span class="p">:</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// info 레벨부터 로그를 남긴다. (debug 레벨은 찍히지 않는다)</span>
+    <span class="na">datePattern</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YYYY-MM-DD</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// rotating될 날짜 포맷</span>
+    <span class="na">zippedArchive</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// archive된 파일 압축 여부, 디폴트는 false</span>
+    <span class="na">maxSize</span><span class="p">:</span> <span class="dl">"</span><span class="s2">20m</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// 파일 당 최대 크기를 20mb로 설정</span>
+    <span class="na">maxFiles</span><span class="p">:</span> <span class="dl">"</span><span class="s2">30d</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// 최근 30일간의 파일만 유지, 오래된 파일은 zippedArchive 설정에 따라 삭제 혹은 압축된다.</span>
+    <span class="na">format</span><span class="p">:</span> <span class="nx">combine</span><span class="p">(</span>
+        <span class="nx">label</span><span class="p">({</span> <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">라벨 이름</span><span class="dl">'</span> <span class="p">}),</span>
+        <span class="nx">timeStamp</span><span class="p">(),</span> <span class="c1">// 위에서 생성했던 타임스태프 포맷을 사용한다.</span>
+        <span class="nx">logFormat</span><span class="p">,</span> <span class="c1">// 위에서 생성했던 로그 출력 포맷 형식을 사용한다.</span>
+    <span class="p">),</span>
     <span class="na">transports</span><span class="p">:</span> <span class="p">[</span>
-        <span class="nx">dailyRotateFileTransport</span>
+        <span class="c1">// error 레벨부터 로그를 파일에 저장한다.</span>
+        <span class="k">new</span> <span class="nx">transports</span><span class="p">.</span><span class="nx">DailyRotateFile</span><span class="p">({</span><span class="na">level</span><span class="p">:</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="na">dirname</span><span class="p">:</span><span class="s2">`</span><span class="p">${</span><span class="nx">ERR_DIR</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="na">filename</span><span class="p">:</span> <span class="s2">`error_%DATE%.log`</span><span class="p">}),</span>
+        <span class="c1">// info 레벨부터 로그를 파일에 저장한다.</span>
+        <span class="k">new</span> <span class="nx">transports</span><span class="p">.</span><span class="nx">DailyRotateFile</span><span class="p">({</span><span class="na">dirname</span><span class="p">:</span><span class="s2">`</span><span class="p">${</span><span class="nx">LOG_DIR</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="na">filename</span><span class="p">:</span> <span class="s2">`log_%DATE%.log`</span><span class="p">})</span> 
+    <span class="p">],</span>
+    <span class="na">exceptionHandlers</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// 예외상황 발생 시 로그를 파일에 저장한다.</span>
+        <span class="k">new</span> <span class="nx">transports</span><span class="p">.</span><span class="nx">DailyRotateFile</span><span class="p">({</span><span class="na">dirname</span><span class="p">:</span><span class="s2">`</span><span class="p">${</span><span class="nx">EXCEPTION_DIR</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="na">filename</span><span class="p">:</span> <span class="s2">`exception_%DATE%.log`</span><span class="p">})</span>
     <span class="p">],</span>
     <span class="na">exitOnError</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-<span class="p">});</span>
+<span class="p">});</span></code></pre></figure>
 
-<span class="c1">// 개발 시 콘솔 출력</span>
+<h3 id="6-모듈-내보내기">6. 모듈 내보내기</h3>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 개발 시 콘솔 출력</span>
 <span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">production</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">logger</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">consoleTransport</span><span class="p">)</span>
 <span class="p">};</span>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">logger</span><span class="p">;</span></code></pre></figure>
+<span class="kd">const</span> <span class="nx">isError</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">e</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">stack</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
+<span class="p">}</span>
 
-<h3 id="6-logjs-최종">6. log.js 최종</h3>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">log</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="c1">// 에러 발생 시 error 레벨 출력</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">isError</span><span class="p">(</span><span class="nx">info</span><span class="p">))</span> <span class="p">{</span> <span class="k">throw</span> <span class="nx">info</span> <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ENV</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">production</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="7-logjs-최종">7. log.js 최종</h3>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">moment</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./moment</span><span class="dl">'</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">winston</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">winston</span><span class="dl">'</span><span class="p">);</span>
@@ -230,7 +249,9 @@ npm i <span class="nt">-s</span> moment-timezone</code></pre></figure>
 
 <span class="kd">const</span> <span class="p">{</span> <span class="nx">addColors</span><span class="p">,</span> <span class="nx">createLogger</span><span class="p">,</span> <span class="nx">transports</span><span class="p">,</span> <span class="nx">format</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">winston</span><span class="p">;</span>
 <span class="kd">const</span> <span class="p">{</span> <span class="nx">combine</span><span class="p">,</span> <span class="nx">label</span><span class="p">,</span> <span class="nx">printf</span><span class="p">,</span> <span class="nx">colorize</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">format</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">LOG_DIR</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">./logs</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">LOG_DIR</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">./logs/log</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">ERR_DIR</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">./logs/error</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">EXCEPTION_DIR</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">./logs/exception</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="nx">addColors</span><span class="p">({</span>
     <span class="na">error</span><span class="p">:</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">,</span>
@@ -248,26 +269,9 @@ npm i <span class="nt">-s</span> moment-timezone</code></pre></figure>
     <span class="k">return</span> <span class="nx">info</span><span class="p">;</span>
 <span class="p">});</span>
 
-<span class="kd">const</span> <span class="nx">dailyRotateFileTransport</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">transports</span><span class="p">.</span><span class="nx">DailyRotateFile</span><span class="p">({</span>
-    <span class="na">level</span><span class="p">:</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">filename</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">LOG_DIR</span><span class="p">}</span><span class="s2">/%DATE%.log`</span><span class="p">,</span>
-    <span class="na">datePattern</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YYYY-MM-DD</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">zippedArchive</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="na">maxSize</span><span class="p">:</span> <span class="dl">"</span><span class="s2">20m</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">maxFiles</span><span class="p">:</span> <span class="dl">"</span><span class="s2">30d</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">colorize</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="na">format</span><span class="p">:</span> <span class="nx">combine</span><span class="p">(</span>
-        <span class="nx">label</span><span class="p">({</span> <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">라벨이름</span><span class="dl">'</span> <span class="p">}),</span>
-        <span class="nx">timestamp</span><span class="p">(),</span>
-        <span class="nx">colorize</span><span class="p">({</span> <span class="na">all</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}),</span>
-        <span class="nx">logFormat</span>
-    <span class="p">)</span>
-<span class="p">});</span>
-
 <span class="kd">const</span> <span class="nx">consoleTransport</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">transports</span><span class="p">.</span><span class="nx">Console</span><span class="p">({</span>
     <span class="na">level</span><span class="p">:</span> <span class="dl">'</span><span class="s1">debug</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">handleExceptions</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="na">colorize</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="na">format</span><span class="p">:</span> <span class="nx">combine</span><span class="p">(</span>
         <span class="nx">label</span><span class="p">({</span> <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">라벨이름</span><span class="dl">'</span> <span class="p">}),</span>
@@ -278,8 +282,22 @@ npm i <span class="nt">-s</span> moment-timezone</code></pre></figure>
 <span class="p">});</span>
 
 <span class="kd">const</span> <span class="nx">logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">createLogger</span><span class="p">({</span>
+    <span class="na">level</span><span class="p">:</span> <span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">datePattern</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YYYY-MM-DD</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">zippedArchive</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">maxSize</span><span class="p">:</span> <span class="dl">"</span><span class="s2">20m</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">maxFiles</span><span class="p">:</span> <span class="dl">"</span><span class="s2">30d</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">format</span><span class="p">:</span> <span class="nx">combine</span><span class="p">(</span>
+        <span class="nx">label</span><span class="p">({</span> <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">라벨 이름</span><span class="dl">'</span> <span class="p">}),</span>
+        <span class="nx">timeStamp</span><span class="p">(),</span>
+        <span class="nx">logFormat</span><span class="p">,</span>
+    <span class="p">),</span>
     <span class="na">transports</span><span class="p">:</span> <span class="p">[</span>
-        <span class="nx">dailyRotateFileTransport</span>
+        <span class="k">new</span> <span class="nx">transports</span><span class="p">.</span><span class="nx">DailyRotateFile</span><span class="p">({</span><span class="na">level</span><span class="p">:</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="na">dirname</span><span class="p">:</span><span class="s2">`</span><span class="p">${</span><span class="nx">ERR_DIR</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="na">filename</span><span class="p">:</span> <span class="s2">`error_%DATE%.log`</span><span class="p">}),</span>
+        <span class="k">new</span> <span class="nx">transports</span><span class="p">.</span><span class="nx">DailyRotateFile</span><span class="p">({</span><span class="na">dirname</span><span class="p">:</span><span class="s2">`</span><span class="p">${</span><span class="nx">LOG_DIR</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="na">filename</span><span class="p">:</span> <span class="s2">`log_%DATE%.log`</span><span class="p">})</span> 
+    <span class="p">],</span>
+    <span class="na">exceptionHandlers</span><span class="p">:</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">transports</span><span class="p">.</span><span class="nx">DailyRotateFile</span><span class="p">({</span><span class="na">dirname</span><span class="p">:</span><span class="s2">`</span><span class="p">${</span><span class="nx">EXCEPTION_DIR</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="na">filename</span><span class="p">:</span> <span class="s2">`exception_%DATE%.log`</span><span class="p">})</span>
     <span class="p">],</span>
     <span class="na">exitOnError</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
 <span class="p">});</span>
@@ -288,23 +306,41 @@ npm i <span class="nt">-s</span> moment-timezone</code></pre></figure>
     <span class="nx">logger</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">consoleTransport</span><span class="p">)</span>
 <span class="p">};</span>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">logger</span><span class="p">;</span></code></pre></figure>
+<span class="kd">const</span> <span class="nx">isError</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">e</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">stack</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
+<span class="p">}</span>
 
-<h3 id="7-사용">7. 사용</h3>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">log</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">isError</span><span class="p">(</span><span class="nx">info</span><span class="p">))</span> <span class="p">{</span> <span class="k">throw</span> <span class="nx">info</span> <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ENV</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">production</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="8-사용">8. 사용</h3>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">const</span> <span class="nx">logger</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./log</span><span class="dl">'</span><span class="p">);</span>
-<span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="dl">'</span><span class="s1">로그를 출력합니다.</span><span class="dl">'</span><span class="p">);</span>
-<span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="dl">'</span><span class="s1">로그를 출력합니다.</span><span class="dl">'</span><span class="p">);</span>
-<span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">로그를 출력합니다.</span><span class="dl">'</span><span class="p">);</span>
-<span class="nx">logger</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">'</span><span class="s1">로그를 출력합니다.</span><span class="dl">'</span><span class="p">);</span></code></pre></figure>
+<span class="nx">logger</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">로그를 출력합니다.</span><span class="dl">'</span><span class="p">);</span></code></pre></figure>
 
-<h3 id="결과">결과</h3>
-<p><img src="/public/images/Node.js log 기록 모듈 winston 사용방법 예시/console.png" alt="콘솔 로그" width="90%" height="30%" style="margin:auto;" /><br />
-<strong>로그 파일 생성도 잘 된 것을 볼 수 있다</strong>
-<img src="/public/images/Node.js log 기록 모듈 winston 사용방법 예시/file.png" alt="로그 파일" width="35%" height="25%" />
-지금까지 winston을 활용하여 로그를 파일로 남기는 작업을 간단히 진행해봤다.<br />
-나도 공부하면서 정리해놓는 거라 미숙한 부분이 많지만 도움 받는 부분이 있다면 좋겠다.<br />
-그리고 예시는 뼈대일 뿐이니 여기에 살을 붙여나가면 된다.</p>
+<h3 id="결과-예시">결과 예시</h3>
+<p><img src="/public/images/Node.js log 기록 모듈 winston 사용방법/console.png" alt="콘솔 로그" width="70%" height="30%" /></p>
+
+<h3 id="로그-파일-구조-예시">로그 파일 구조 예시</h3>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">log
+├── error
+│   └── error_2020-03-07.log
+├── exception
+│   └── exception_2020-03-07.log
+└── log
+    └── log_2020-03-07.log</code></pre></figure>
  
   
     <div id="disqus_thread"></div>
@@ -352,10 +388,10 @@ npm i <span class="nt">-s</span> moment-timezone</code></pre></figure>
     <script type="text/javascript">
   var disqus_config = function() {
     this.page.url =
-      "http://localhost:4000/2020/03/07/Node.js-log-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF-winston-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8-%E1%84%8B%E1%85%A8%E1%84%89%E1%85%B5/";
+      "http://localhost:4000/2020/03/07/Node.js-log-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF-winston-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8/";
     this.page.identifier =
-      "/2020/03/07/Node.js-log-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF-winston-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8-%E1%84%8B%E1%85%A8%E1%84%89%E1%85%B5/";
-    // this.page.title = "Node.js log 기록 모듈 winston 사용방법 예시 &#8211; ";
+      "/2020/03/07/Node.js-log-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF-winston-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8/";
+    // this.page.title = "Node.js log 기록 모듈 winston 사용방법 &#8211; ";
   };
   (function() {
     // DON'T EDIT BELOW THIS LINE
