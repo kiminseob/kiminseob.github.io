@@ -53,7 +53,7 @@
       href="/about/"
       >소개</a
     >
-            
+                
     <a
       class="sidebar-nav-item"
       href="/tags/"
@@ -92,6 +92,11 @@
   <ul class="posts">
      
     <li>
+      <a href="/2020/08/19/video.js%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%86%AB-%E1%84%8B%E1%85%B0%E1%86%B8-%E1%84%91%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A5-%E1%84%86%E1%85%A1%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF%E1%84%80%E1%85%B5/">video.js를 이용한 웹 플레이어 만들기</a
+      ><span> &raquo; August 19, 2020</span>
+    </li>
+      
+    <li>
       <a href="/2020/04/23/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-API-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%84%92%E1%85%AA-%E1%84%83%E1%85%A9%E1%84%80%E1%85%AE-JSDoc/">자바스크립트 API 문서화 도구 JSDoc</a
       ><span> &raquo; April 23, 2020</span>
     </li>
@@ -119,6 +124,231 @@
   </ul>
 </div>
 <!-- <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="//2020/08/19/video.js%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%86%AB-%E1%84%8B%E1%85%B0%E1%86%B8-%E1%84%91%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%A5-%E1%84%86%E1%85%A1%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF%E1%84%80%E1%85%B5/">
+        video.js를 이용한 웹 플레이어 만들기
+      </a>
+    </h1>
+
+    <span class="post-date">19 Aug 2020</span>
+
+    <p><a href="https://videojs.com/">video.js</a> 오픈 소스를 활용하여 웹 플레이어를 만들어 보려고 한다.</p>
+
+<p>CDN 형식으로도 사용 가능하지만 기능을 살짝 변경해 볼 예정이라 소스를 직접 받았다.  (<a href="https://videojs.com/getting-started/#customize">참고</a>)</p>
+
+<h3 id="1-프로젝트-폴더를-만들고-videojs를-설치한다">1. 프로젝트 폴더를 만들고 video.js를 설치한다.</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir </span>my-web-player <span class="o">&amp;&amp;</span> <span class="nb">cd </span>my-web-player
+<span class="nv">$ </span>npm init <span class="nt">-y</span>
+<span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">--save-dev</span> video.js
+</code></pre></div></div>
+
+<p>이제 video.js 모듈을 이용해 로컬 영상 혹은 유튜브 영상을 재생해 보려고 한다.</p>
+
+<p>로컬 영상을 재생 하려면 2번 부터, 유튜브 영상 재생은 3번 부터 보면 된다.</p>
+
+<h3 id="2-아래-명령어로-static-폴더를-생성한다">2. 아래 명령어로 static 폴더를 생성한다.</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> public/<span class="o">{</span>img,video,js<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>샘플 이미지를 img 폴더에 test_poster.png 로 저장한다. (대표 이미지용)</li>
+</ul>
+
+<p><img src="/public/images/video.js를 이용한 웹 플레이어 만들기/test_poster.png" alt="샘플이미지" width="70%" height="30%" /></p>
+
+<p>샘플 이미지</p>
+
+<ul>
+  <li>테스트 할 동영상을 video 폴더에 test.mp4 로 저장한다. (난 <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ&amp;t=79s">유튜브 영상</a>을 다운로드 받았다.)</li>
+</ul>
+
+<h3 id="3-js-폴더에-my-playerjs-파일을-만들고-아래-코드를-작성한다">3. js 폴더에 my-player.js 파일을 만들고 아래 코드를 작성한다.</h3>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="nx">videojs</span><span class="p">(</span><span class="dl">'</span><span class="s1">my-player</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">controls</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">autoplay</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">preload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">auto</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">width</span><span class="p">:</span> <span class="dl">'</span><span class="s1">640</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">height</span><span class="p">:</span> <span class="dl">'</span><span class="s1">264</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">poster</span><span class="p">:</span> <span class="dl">'</span><span class="s1">img/test_poster.png</span><span class="dl">'</span> <span class="c1">// 로컬 영상만 추가</span>
+<span class="p">});</span>
+<span class="nx">player</span><span class="p">.</span><span class="nx">src</span><span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">video/mp4</span><span class="dl">'</span><span class="p">,</span> <span class="na">src</span><span class="p">:</span> <span class="dl">'</span><span class="s1">video/test.mp4</span><span class="dl">'</span> <span class="p">});</span> <span class="c1">//로컬 영상만 추가</span>
+</code></pre></div></div>
+
+<h3 id="4-public-폴더에-indexhtml-파일을-만들고-아래-코드를-작성한다">4. public 폴더에 index.html 파일을 만들고 아래 코드를 작성한다.</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">--save</span> videojs-youtube // 유튜브 영상을 스트리밍하기 위해 설치한다.
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>My Web Player<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"video-js.min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="c">&lt;!-- 로컬 영상은 아래의 body를 이용 --&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+	<span class="nt">&lt;video</span> <span class="na">id=</span><span class="s">"my-player"</span> <span class="na">class=</span><span class="s">"video-js"</span> <span class="na">data-setup=</span><span class="s">"{}"</span><span class="nt">&gt;&lt;/video&gt;</span>
+        
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"video.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/my-player.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="c">&lt;!-- 유튜브 영상은 아래의 body를 이용 --&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;video</span> <span class="na">id=</span><span class="s">"my-player"</span> <span class="na">class=</span><span class="s">"video-js"</span> <span class="na">data-setup=</span><span class="s">'{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=LXb3EKWsInQ&amp;t=79s"}] }'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/video&gt;</span>
+      
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"video.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"Youtube.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/my-player.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="5-서버-측-코드를-작성하기-위해-express를-설치하고-루트에-appjs를-생성하여-아래-샘플을-작성한다">5. 서버 측 코드를 작성하기 위해 express를 설치하고 루트에 app.js를 생성하여 아래 샘플을 작성한다.</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">--save</span> express
+</code></pre></div></div>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">public</span><span class="dl">'</span><span class="p">)));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">node_modules/video.js/dist</span><span class="dl">'</span><span class="p">)));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">node_modules/videojs-youtube/dist</span><span class="dl">'</span><span class="p">)));</span> <span class="c1">// 유튜브 재생만 추가</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">My Web Player server listening on port 3000</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<ul>
+  <li>package.json은 아래와 같다.</li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-web-player"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node app"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"video.js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^7.7.5"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"express"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.17.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"videojs-youtube"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.6.1"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li>현재까지 완성된 프로젝트 구조는 아래와 같다.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span>
+├── app.js
+├── node_modules
+├── package-lock.json
+├── package.json
+└── public
+    ├── img
+    │   └── test_poster.png
+    ├── index.html
+    └── video
+        └── test.mp4
+</code></pre></div></div>
+
+<ul>
+  <li>프로젝트 루트에서 아래 명령어로 서버를 실행하고 <a href="http://localhost:3000">localhost:3000</a>으로 접속한다.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm start
+</code></pre></div></div>
+
+<h3 id="결과-화면">결과 화면</h3>
+
+<p><img src="/public/images/video.js를 이용한 웹 플레이어 만들기/result.png" alt="결과 화면" width="70%" height="30%" /></p>
+
+<p>👏잘 나온다.</p>
+
+<p>마지막으로 <a href="https://github.com/videojs/themes">테마</a>를 forest로 변경하려고 한다. 아래 코드를 head에 추가하고</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
+	<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://unpkg.com/@videojs/themes@1/dist/forest/index.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</code></pre></div></div>
+
+<p>video태그의 class에 vjs-theme-forest를 추가한다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">video</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">my-player</span><span class="dl">"</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">video-js vjs-theme-forest</span><span class="dl">"</span> <span class="nx">data</span><span class="o">-</span><span class="nx">setup</span><span class="o">=</span><span class="dl">"</span><span class="s2">{}</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">&lt;</span><span class="err">/</span><span class="nt">video</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<h3 id="forest-테마를-적용한-결과-화면">forest 테마를 적용한 결과 화면</h3>
+
+<p><img src="/public/images/video.js를 이용한 웹 플레이어 만들기/forest_result.png" alt="forest테마 적용" width="70%" height="30%" /></p>
+
+<p>이제 <a href="https://docs.videojs.com/">video.js</a> 문서를 참고하여 몇 가지 기능들을 추가할 것이다.</p>
+
+<h3 id="shortcut-기능-추가">shortcut 기능 추가</h3>
+
+<p><a href="https://www.notion.so/5b2625c969194520b6e456cc28ed7019">기본값</a></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// hotkeys를 true로 활성화하면 기본값이 적용된다.</span>
+<span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="nx">videojs</span><span class="p">(</span><span class="dl">'</span><span class="s1">my-player</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">userActions</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">hotkeys</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// event를 이용해 숏컷을 수정할 수 있다. 재생/일시정지 key를 enter로 변경한 예시이다.</span>
+<span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="nx">videojs</span><span class="p">(</span><span class="dl">'</span><span class="s1">my-player</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">userActions</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">hotkeys</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">which</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">paused</span><span class="p">()){</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+                <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">pause</span><span class="p">();</span>
+                <span class="p">}</span>                
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">player</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span> <span class="c1">// 영상 컴포넌트에 초점을 맞춘다.</span>
+</code></pre></div></div>
+
+<h3 id="2-유동적인-화면">2. 유동적인 화면</h3>
+
+<ul>
+  <li>fluid 옵션을 true로 설정하면, 플레이어가 화면 크기에 유동적으로 맞춰진다.</li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="nx">videojs</span><span class="p">(</span><span class="dl">'</span><span class="s1">my-player</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+	<span class="na">fluid</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>이외에도 여러가지 기능들을 원하는 대로 변경해서 나만의 플레이어를 만들 수 있다.</p>
+
+<h3 id="최종-결과">최종 결과</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lSPktX-ZboQ" frameborder="0" allowfullscreen=""></iframe>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -785,148 +1015,11 @@
 
   </div>
   
-  <div class="post">
-    <h1 class="post-title">
-      <a href="//2014/01/01/example-content/">
-        포스트 작성 예시
-      </a>
-    </h1>
-
-    <span class="post-date">01 Jan 2014</span>
-
-    <div class="message">
-  Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
-</div>
-
-<p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. <em>Aenean eu leo quam.</em> Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-
-<blockquote>
-  <p>Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-</blockquote>
-
-<p>Etiam porta <strong>sem malesuada magna</strong> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-
-<h2 id="inline-html-elements">Inline HTML elements</h2>
-
-<p>HTML defines a long list of available inline tags, a complete list of which can be found on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network</a>.</p>
-
-<ul>
-  <li><strong>To bold text</strong>, use <code class="language-plaintext highlighter-rouge">&lt;strong&gt;</code>.</li>
-  <li><em>To italicize text</em>, use <code class="language-plaintext highlighter-rouge">&lt;em&gt;</code>.</li>
-  <li>Abbreviations, like <abbr title="HyperText Markup Langage">HTML</abbr> should use <code class="language-plaintext highlighter-rouge">&lt;abbr&gt;</code>, with an optional <code class="language-plaintext highlighter-rouge">title</code> attribute for the full phrase.</li>
-  <li>Citations, like <cite>— Mark otto</cite>, should use <code class="language-plaintext highlighter-rouge">&lt;cite&gt;</code>.</li>
-  <li><del>Deleted</del> text should use <code class="language-plaintext highlighter-rouge">&lt;del&gt;</code> and <ins>inserted</ins> text should use <code class="language-plaintext highlighter-rouge">&lt;ins&gt;</code>.</li>
-  <li>Superscript <sup>text</sup> uses <code class="language-plaintext highlighter-rouge">&lt;sup&gt;</code> and subscript <sub>text</sub> uses <code class="language-plaintext highlighter-rouge">&lt;sub&gt;</code>.</li>
-</ul>
-
-<p>Most of these elements are styled by browsers with few modifications on our part.</p>
-
-<h2 id="heading">Heading</h2>
-
-<p>Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-
-<h3 id="code">Code</h3>
-
-<p>Cum sociis natoque penatibus et magnis dis <code class="language-plaintext highlighter-rouge">code element</code> montes, nascetur ridiculus mus.</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Example can be run directly in your JavaScript console
-</span>
-
-<span class="c1">// Create a function that takes two arguments and returns the sum of those arguments
-</span>
-<span class="kd">var</span> <span class="nx">adder</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">return a + b</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="c1">// Call the function
-</span>
-<span class="nx">adder</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
-<span class="c1">// &gt; 8</span></code></pre></figure>
-
-<p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-
-<h3 id="lists">Lists</h3>
-
-<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-
-<ul>
-  <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-  <li>Donec id elit non mi porta gravida at eget metus.</li>
-  <li>Nulla vitae elit libero, a pharetra augue.</li>
-</ul>
-
-<p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-
-<ol>
-  <li>Vestibulum id ligula porta felis euismod semper.</li>
-  <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-  <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
-</ol>
-
-<p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-
-<dl>
-  <dt>HyperText Markup Language (HTML)</dt>
-  <dd>The language used to describe and define the content of a Web page</dd>
-
-  <dt>Cascading Style Sheets (CSS)</dt>
-  <dd>Used to describe the appearance of Web content</dd>
-
-  <dt>JavaScript (JS)</dt>
-  <dd>The programming language used to build advanced Web sites and applications</dd>
-</dl>
-
-<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-
-<h3 id="tables">Tables</h3>
-
-<p>Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Upvotes</th>
-      <th>Downvotes</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <td>Totals</td>
-      <td>21</td>
-      <td>23</td>
-    </tr>
-  </tfoot>
-  <tbody>
-    <tr>
-      <td>Alice</td>
-      <td>10</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <td>Bob</td>
-      <td>4</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>Charlie</td>
-      <td>7</td>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-
-<hr />
-
-<p>Want to see something else added? <a href="https://github.com/poole/poole/issues/new">Open an issue.</a></p>
-
-  </div>
-  
 </div>
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/page2">Older</a>
   
   
     <span class="pagination-item newer">Newer</span>
