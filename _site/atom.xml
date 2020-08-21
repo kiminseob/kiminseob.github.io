@@ -4,13 +4,173 @@
  <title>김인섭</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2020-08-19T17:41:35+09:00</updated>
+ <updated>2020-08-22T00:33:46+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Inseop Kim</name>
    <email>kis6473@naver.com</email>
  </author>
 
+ 
+ <entry>
+   <title>당근마켓 클론 프로젝트</title>
+   <link href="http://localhost:4000/2020/08/22/%E1%84%83%E1%85%A1%E1%86%BC%E1%84%80%E1%85%B3%E1%86%AB%E1%84%86%E1%85%A1%E1%84%8F%E1%85%A6%E1%86%BA-%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A9%E1%86%AB-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3/"/>
+   <updated>2020-08-22T00:00:00+09:00</updated>
+   <id>http://localhost:4000/2020/08/22/당근마켓 클론 프로젝트</id>
+   <content type="html">&lt;h3 id=&quot;관심있는-서비스인-당근마켓을-클론해-보기로-했다&quot;&gt;관심있는 서비스인 당근마켓을 클론해 보기로 했다.&lt;/h3&gt;
+
+&lt;p&gt;개발 스펙은 typescript, graphql, react, mysql를 이용하려고 하는데 대부분 강의 들으면서 한번 따라했던 수준이라 어떻게 될지 모르겠지만 일단 부딪혀 볼 생각이다.&lt;/p&gt;
+
+&lt;p&gt;뭐라도 만들어 봐야 감이 올 것 같기 때문에..&lt;/p&gt;
+
+&lt;p&gt;클론이 다 끝났을 때를 생각하면 결과물이 어떨지 살짝 설레기도 한다.&lt;/p&gt;
+
+&lt;p&gt;마침 &lt;a href=&quot;https://medium.com/@taesun/%EB%8B%B9%EA%B7%BC%EB%A7%88%EC%BC%93-%ED%81%B4%EB%A1%A0%EC%BD%94%EB%94%A9-%EB%95%85%EA%B7%BC%EB%A7%88%EC%BC%93-msa-%EA%B5%AC%EC%B6%95%ED%95%B4%EB%B3%B4%EA%B8%B0-dangn-market-clone-coding-ddangn-market-0-%EA%B3%84%ED%9A%8D-%EC%84%B8%EC%9A%B0%EA%B8%B0-c50e10b486c3&quot;&gt;&lt;strong&gt;여기&lt;/strong&gt;&lt;/a&gt;에 어떤 분이 벌써 클론하신 것 같다. (대단하시다..)&lt;/p&gt;
+
+&lt;p&gt;많은 도움이 될 것 같습니다. 참고 하겠습니다!&lt;/p&gt;
+
+&lt;h3 id=&quot;구체적인-기능을-정의하기에-앞서-먼저-기존-당근마켓-서비스에서-어디까지-구현해볼지-생각해-보았다&quot;&gt;구체적인 기능을 정의하기에 앞서 먼저 기존 당근마켓 서비스에서 어디까지 구현해볼지 생각해 보았다.&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;당근마켓의 5가지 탭에서 [내 근처]는 제외하고 [홈, 글쓰기, 채팅, 나의 당근] 탭을 뼈대로 만들어 볼 생각&lt;/li&gt;
+  &lt;li&gt;중고 거래 항목에 대한 기능만 만들어 볼 예정&lt;/li&gt;
+  &lt;li&gt;로그인은 휴대폰 번호 말고 (문자 인증이 유료인듯해서) OAuth를 이용할 예정&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;서버-typescript--graphql-기능은&quot;&gt;서버 (typescript + graphql) 기능은&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;상품&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;상품 생성&lt;/li&gt;
+      &lt;li&gt;상품 제거&lt;/li&gt;
+      &lt;li&gt;상품 업데이트&lt;/li&gt;
+      &lt;li&gt;상품 전체 조회 ( 옵션 : 키워드, 카테고리, 판매자)&lt;/li&gt;
+      &lt;li&gt;상품 상세 조회&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;나의 당근&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;판매내역 전체 조회&lt;/li&gt;
+      &lt;li&gt;구매내역 전체 조회&lt;/li&gt;
+      &lt;li&gt;관심목록 전체 조회&lt;/li&gt;
+      &lt;li&gt;키워드 알림 등록&lt;/li&gt;
+      &lt;li&gt;동네 인증 등록&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;채팅&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;채팅방 생성&lt;/li&gt;
+      &lt;li&gt;채팅방 제거&lt;/li&gt;
+      &lt;li&gt;채팅하기&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;알림&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;키워드 알림 발송&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;일단 이 정도로 생각해봤다.&lt;/p&gt;
+
+&lt;h3 id=&quot;위-기능을-좀-더-구체화해서-api-형식으로-나타내면&quot;&gt;위 기능을 좀 더 구체화해서 API 형식으로 나타내면&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;상품&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;상품 생성 (파라미터 : 유저ID, 제목, 내용, 사진, 가격, 카테고리, 판매중/판매완료 상태)&lt;/p&gt;
+
+        &lt;p&gt;&lt;strong&gt;POST&lt;/strong&gt; /api/v1/products&lt;/p&gt;
+
+        &lt;p&gt;?userID={}&amp;amp;title={}&amp;amp;contents={}&amp;amp;image={}&amp;amp;price={}&amp;amp;category={}&amp;amp;status={selling/soldout}&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;상품 업데이트 (파라미터 : 유저ID, 제목, 내용, 사진, 가격, 카테고리, 판매중/판매완료 상태)&lt;/p&gt;
+
+        &lt;p&gt;&lt;strong&gt;PUT&lt;/strong&gt; /api/v1/products/{product ID}&lt;/p&gt;
+
+        &lt;p&gt;?userID={}&amp;amp;title={}&amp;amp;contents={}&amp;amp;image={}&amp;amp;price={}&amp;amp;category={}&amp;amp;status={selling/soldout}&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;상품 제거&lt;/p&gt;
+
+        &lt;p&gt;&lt;strong&gt;DELETE&lt;/strong&gt; /api/v1/products/{product ID}&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;상품 상세 조회&lt;/p&gt;
+
+        &lt;p&gt;&lt;strong&gt;GET&lt;/strong&gt; /api/v1/products/{product ID}&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;상품 전체 조회 (파라미터 : 지역, 키워드, 카테고리)&lt;/p&gt;
+
+        &lt;p&gt;&lt;strong&gt;GET&lt;/strong&gt; /api/v1/products&lt;/p&gt;
+
+        &lt;p&gt;?resion={}&amp;amp;keyword={}&amp;amp;category={}&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;나의 당근&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;판매내역, 구매내역, 관심목록 전체 조회&lt;/p&gt;
+
+        &lt;p&gt;&lt;strong&gt;GET&lt;/strong&gt; /api/v1/users/{user ID}&lt;/p&gt;
+
+        &lt;p&gt;?list={sale,purchase,heart}&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;키워드 알림, 동네 등록&lt;/p&gt;
+
+        &lt;p&gt;&lt;strong&gt;POST&lt;/strong&gt; /api/vi/users/{user ID}&lt;/p&gt;
+
+        &lt;p&gt;?notification={}&amp;amp;resion={}&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;채팅&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;채팅방 생성&lt;/p&gt;
+
+        &lt;p&gt;&lt;strong&gt;POST&lt;/strong&gt; /api/v1/rooms&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;채팅방 조회&lt;/p&gt;
+
+        &lt;p&gt;&lt;strong&gt;GET&lt;/strong&gt; /api/v1/rooms/{room ID}&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;채팅방 제거&lt;/p&gt;
+
+        &lt;p&gt;&lt;strong&gt;DELETE&lt;/strong&gt; /api/v1/rooms/{room ID}&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;알림&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;알림 발송&lt;/p&gt;
+
+        &lt;p&gt;&lt;strong&gt;POST&lt;/strong&gt; /api/v1/notifications&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이렇게 생각해봤는데 처음 해보는거라 이게 맞는지도 잘 모르겠다ㅋㅋ&lt;/p&gt;
+
+&lt;p&gt;그래도 일단 해보기로&lt;/p&gt;
+
+&lt;p&gt;고고&lt;/p&gt;
+
+&lt;p&gt;#당근마켓클론 #당근마켓좋아 #이글을본다면당근을흔들어줘&lt;/p&gt;
+
+&lt;p&gt;#취준생 #백수 #재밌는개발이나하자&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>video.js를 이용한 웹 플레이어 만들기</title>
